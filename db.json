@@ -1,0 +1,92 @@
+{
+  "users": [
+    {
+      "name": "Виктор",
+      "surname": "Петров",
+      "age": 25,
+      "phone": "+79123456789",
+      "email": "viktorpetrov@me.com",
+      "id": "0700"
+    },
+    {
+      "name": "Анна",
+      "surname": "Иванова",
+      "age": 28,
+      "phone": "+79034567890",
+      "email": "annairvanova@me.com",
+      "id": "09eb"
+    },
+    {
+      "name": "Дмитрий",
+      "surname": "Сидоров",
+      "age": 32,
+      "phone": "+79118765432",
+      "email": "dmitrysidorov@me.com",
+      "id": "75cd"
+    },
+    {
+      "name": "Елена",
+      "surname": "Кузнецова",
+      "age": 35,
+      "phone": "+79152345678",
+      "email": "elenakuznetsova@me.com",
+      "id": "e9ec"
+    },
+    {
+      "name": "Владимир",
+      "surname": "Михайлов",
+      "age": 40,
+      "phone": "+79167654321",
+      "email": "vladimir@me.com",
+      "id": "1a6b"
+    },
+    {
+      "name": "Наталья",
+      "surname": "Сергеева",
+      "age": 29,
+      "phone": "+79145678901",
+      "email": "natalyasergeeva@me.com",
+      "id": "e657"
+    },
+    {
+      "name": "Иван",
+      "surname": "Ковалев",
+      "age": 33,
+      "phone": "+79178901234",
+      "email": "ivan@me.com",
+      "id": "984f"
+    },
+    {
+      "name": "Ольга",
+      "surname": "Павлова",
+      "age": 38,
+      "phone": "+79123456789",
+      "email": "olgavpavlova@me.com",
+      "id": "4263"
+    },
+    {
+      "name": "Мария",
+      "surname": "Гордеева",
+      "age": 27,
+      "phone": "+79034567890",
+      "email": "mariagordeeva@me.com",
+      "id": "b18d"
+    },
+    {
+      "name": "Алексей",
+      "surname": "Лебедев",
+      "age": 36,
+      "phone": "+79118765432",
+      "email": "alexeylebedev@me.com",
+      "id": "27c4"
+    },
+    {
+      "name": "Екатерина",
+      "surname": "Смирнова",
+      "age": 31,
+      "phone": "+79152345678",
+      "email": "ekaterinasmirnova@me.com",
+      "id": "1e7c"
+    }
+  ]
+}

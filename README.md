@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Table App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Table App - это простое веб-приложение, которое позволяет просматривать, добавлять и удалять пользователей из таблицы.
 
-## Available Scripts
+## Используемые технологии
 
-In the project directory, you can run:
+* React
+* React Hooks
+* Framer Motion
+* Axios
+* JSON Server
+* React Hook Form
 
-### `npm start`
+## Реализация
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Приложение состоит из двух основных компонентов: Table и Form. Table отображает список пользователей, а Form позволяет добавлять новых пользователей.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Table
 
-### `npm test`
+Таблица реализована с помощью HTML-таблицы и отображает список пользователей, полученных из базы данных. Каждая строка таблицы представляет одного пользователя и содержит его имя, фамилию, возраст, телефон и электронную почту.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Также была реализована анимация с помощью Framer Motion, чтобы обеспечить плавную анимацию при добавлении или удалении пользователей.
 
-### `npm run build`
+### Form
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Форма была реализована с помощью React Hook Form, чтобы обеспечить легкую и удобную работу с формами. Она состоит из полей для ввода имени, фамилии, возраста, телефона и электронной почты. При отправке формы данные отправляются на сервер, где они добавляются в базу данных.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Запуск приложения
 
-### `npm run eject`
+Чтобы запустить приложение, необходимо выполнить следующие шаги:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Клонировать репозиторий
+2. Установить зависимости с помощью npm
+3. Запустить json-server с помощью npm run server
+4. Запустить приложение помощью команды npm start
+5. Открыть браузер и перейти по адресу <http://localhost:3000>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Отсутствие стейт-менеджера
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+В нашем проекте отсутствует стейт-менеджер, поскольку мы не считаем его необходимым для реализации текущей функциональности. Мы используем React Hooks для управления состоянием компонентов, что позволяет нам избежать необходимости использования стейт-менеджера.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Почему мы не использовали много компонентов
 
-## Learn More
+Мы решили не использовать много компонентов, поскольку это позволило нам упростить код и уменьшить количество зависимостей. Мы хотели создать простое и легкое в использовании приложение, и использование только двух компонентов помогло нам достичь этой цели.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Почему мы использовали только два компонента
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Мы использовали только два компонента, Table и Form, поскольку они позволяют нам реализовать основную функциональность нашего приложения. Table отображает список пользователей, а Form позволяет добавлять новых пользователей. Мы не хотели усложнять код, создавая много компонентов, и поэтому решили использовать только два основных компонента.
 
-### Code Splitting
+## База данных
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+JSON Server - это библиотека, которая позволяет нам создавать REST API на основе JSON-файла. Она обеспечивает поддержку HTTP-запросов GET, POST, PUT, DELETE, а также дает возможность создавать собственные эндпоинты. JSON Server удобен для разработки, потому что не требует создания полноценного сервера, а также позволяет легко изменять и добавлять данные.
 
-### Analyzing the Bundle Size
+В нашем приложении мы используем JSON Server, чтобы хранить список пользователей. Мы создаем файл db.json, в котором храним данные в формате JSON. Затем мы запускаем JSON Server, который создает REST API на основе нашего файла db.json.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Чтобы отправлять запросы на наш сервер, мы используем библиотеку Axios. Axios - это популярная библиотека, которая позволяет отправлять HTTP-запросы с помощью JavaScript. Она обеспечивает поддержку Promise, а также имеет множество других полезных функций.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Как мы могли бы реализовать проверку ошибок на сервере
 
-### Advanced Configuration
+Если сервер не может принять форму, он может вернуть ошибку. Мы могли бы обрабатывать такие ошибки, используя try-catch, когда отправляем запрос на сервер. В try-блоке мы размещаем код, который отправляет запрос на сервер, а в catch-блоке - код, который обрабатывает ошибку.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
