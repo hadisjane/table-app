@@ -35,20 +35,21 @@ function Form({ onAddUser }) {
 		const trimmedValue = value.trim();
 		const name = getValues("name").trim();
 
-		// Определяем алфавит для имени
-		const isNameCyrillic = /^[А-ЯЁ][а-яё]+$/.test(name);
-		const isNameLatin = /^[A-Z][a-z]+$/.test(name);
-
 		// Если имя валидно, то проверяем, что фамилия на том же алфавите
-		if (isNameCyrillic && /^[А-ЯЁ][а-яё]+$/.test(trimmedValue)) {
-			return true;
-		}
-		if (isNameLatin && /^[A-Z][a-z]+$/.test(trimmedValue)) {
-			return true;
+		if (validateName(name)) {
+			const isNameCyrillic = /^[А-ЯЁ][а-яё]+$/.test(name);
+			const isNameLatin = /^[A-Z][a-z]+$/.test(name);
+
+			if (isNameCyrillic && /^[А-ЯЁ][а-яё]+$/.test(trimmedValue)) {
+				return true;
+			}
+			if (isNameLatin && /^[A-Z][a-z]+$/.test(trimmedValue)) {
+				return true;
+			}
 		}
 
-		// Возвращаем false, если фамилия и имя на разных алфавитах
-		return false;
+		// Если имя не валидно, то не подсвечиваем фамилию
+		return errors.name ? true : false;
 	};
 
 	const validateAge = (value) => {
