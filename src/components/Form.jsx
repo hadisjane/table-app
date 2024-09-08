@@ -84,21 +84,20 @@ function Form({ onAddUser }) {
 					max: 150,
 					validate: (value) => {
 						const number = Number.parseInt(value, 10);
-						const trimmedValue = value.trim();
 						return (
 							!isNaN(number) &&
 							number >= 1 &&
 							number <= 150 &&
-							trimmedValue === value
+							/^\d+$/.test(value)
 						);
 					},
 					onChange: (e) => {
 						const trimmedValue = e.target.value.trim();
-						e.target.value = trimmedValue;
+						e.target.value = trimmedValue.replace(/[^\d]/g, "");
 					},
 					onBlur: (e) => {
 						const trimmedValue = e.target.value.trim();
-						e.target.value = trimmedValue;
+						e.target.value = trimmedValue.replace(/[^\d]/g, "");
 					},
 				})}
 				style={{
