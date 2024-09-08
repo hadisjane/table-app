@@ -33,24 +33,36 @@ function Form({ onAddUser }) {
 
 	const validateSurname = (value) => {
 		const trimmedValue = value.trim();
-		const name = getValues("name").trim();
-
-		// Если имя валидно, то проверяем, что фамилия на том же алфавите
-		if (validateName(name)) {
-			const isNameCyrillic = /^[А-ЯЁ][а-яё]+$/.test(name);
-			const isNameLatin = /^[A-Z][a-z]+$/.test(name);
-
-			if (isNameCyrillic && /^[А-ЯЁ][а-яё]+$/.test(trimmedValue)) {
-				return true;
-			}
-			if (isNameLatin && /^[A-Z][a-z]+$/.test(trimmedValue)) {
-				return true;
-			}
+	 
+		// проверяем, что фамилия начинается с заглавной буквы
+		if (!/^[А-ЯЁA-Z]/.test(trimmedValue)) {
+		  return false;
 		}
-
-		// Если имя не валидно, то не подсвечиваем фамилию
-		return errors.name ? true : false;
-	};
+	 
+		// проверяем, что фамилия состоит только из букв
+		if (!/^[а-яёa-zА-ЯЁA-Z]+$/.test(trimmedValue)) {
+		  return false;
+		}
+	 
+		// проверяем, что фамилия не содержит больших букв в середине
+		if (/^[А-ЯЁA-Z][а-яёa-z]*[А-ЯЁA-Z]/.test(trimmedValue)) {
+		  return false;
+		}
+	 
+		// проверяем, что фамилия соответствует тому же алфавиту, что и имя
+		const name = getValues("name").trim();
+		const isNameCyrillic = /^[А-ЯЁ][а-яё]+$/.test(name);
+		const isNameLatin = /^[A-Z][a-z]+$/.test(name);
+	 
+		if (isNameCyrillic && !/^[А-ЯЁ][а-яё]+$/.test(trimmedValue)) {
+		  return false;
+		}
+		if (isNameLatin && !/^[A-Z][a-z]+$/.test(trimmedValue)) {
+		  return false;
+		}
+	 
+		return true;
+	 };
 
 	const validateAge = (value) => {
 		const age = parseInt(value, 10);
