@@ -30,7 +30,23 @@ function Form({ onAddUser }) {
 			<input
 				type="text"
 				placeholder="Имя"
-				{...register("name", { required: true })}
+				{...register("name", {
+					required: true,
+					validate: (value) => {
+						const firstLetter = value[0].toUpperCase();
+						return firstLetter === value[0] && value.trim() !== "";
+					},
+					onChange: (e) => {
+						if (!e.target.value.trim()) {
+							e.target.value = "";
+						}
+					},
+					onBlur: (e) => {
+						if (!e.target.value.trim()) {
+							e.target.value = "";
+						}
+					},
+				})}
 				style={{
 					border: errors?.name ? "1px solid red" : "",
 				}}
@@ -38,7 +54,23 @@ function Form({ onAddUser }) {
 			<input
 				type="text"
 				placeholder="Фамилия"
-				{...register("surname", { required: true })}
+				{...register("surname", {
+					required: true,
+					validate: (value) => {
+						const firstLetter = value[0].toUpperCase();
+						return firstLetter === value[0] && value.trim() !== "";
+					},
+					onChange: (e) => {
+						if (!e.target.value.trim()) {
+							e.target.value = "";
+						}
+					},
+					onBlur: (e) => {
+						if (!e.target.value.trim()) {
+							e.target.value = "";
+						}
+					},
+				})}
 				style={{
 					border: errors?.surname ? "1px solid red" : "",
 				}}
@@ -52,7 +84,21 @@ function Form({ onAddUser }) {
 					max: 150,
 					validate: (value) => {
 						const number = Number.parseInt(value, 10);
-						return !isNaN(number) && number >= 1 && number <= 150;
+						const trimmedValue = value.trim();
+						return (
+							!isNaN(number) &&
+							number >= 1 &&
+							number <= 150 &&
+							trimmedValue === value
+						);
+					},
+					onChange: (e) => {
+						const trimmedValue = e.target.value.trim();
+						e.target.value = trimmedValue;
+					},
+					onBlur: (e) => {
+						const trimmedValue = e.target.value.trim();
+						e.target.value = trimmedValue;
 					},
 				})}
 				style={{
@@ -73,17 +119,37 @@ function Form({ onAddUser }) {
 					minLength: 9,
 					maxLength: 16,
 					pattern: /^\d{9,16}$/,
+					onChange: (e) => {
+						if (!e.target.value.trim()) {
+							e.target.value = "";
+						}
+					},
+					onBlur: (e) => {
+						if (!e.target.value.trim()) {
+							e.target.value = "";
+						}
+					},
 				})}
 				style={{
 					border: errors?.phone ? "1px solid red" : "",
 				}}
 			/>
 			<input
-				type="email"
+				type="text"
 				placeholder="Почта"
 				{...register("email", {
 					required: true,
-					pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+					pattern: /^[a-z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+					validate: (value) => {
+						const trimmedValue = value.trim().replace(/\s+/g, "");
+						return !trimmedValue.startsWith(trimmedValue[0].toUpperCase());
+					},
+					onChange: (e) => {
+						e.target.value = e.target.value.trim().replace(/\s+/g, "");
+					},
+					onBlur: (e) => {
+						e.target.value = e.target.value.trim().replace(/\s+/g, "");
+					},
 				})}
 				style={{
 					border: errors?.email ? "1px solid red" : "",
